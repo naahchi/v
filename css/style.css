@@ -7,6 +7,9 @@
 a{
     -webkit-tap-highlight-color: transparent;
 }
+svg{
+    display: block;
+}
 body{
     background-color: rgb(232, 232, 232);
 }
@@ -40,11 +43,29 @@ body{
 .bottom_nav{
     position: fixed;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     height: 45px;
     background-color: white;
     z-index: 99;
     box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.bottom_icon{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+.icon_text{
+    display: flex;
+    justify-content: center;
+}
+.bottom_icon span{
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 main{
     min-height: calc(100dvh - 128px);
