@@ -32,7 +32,6 @@ body{
     font-weight: 1000;
     background-color: rgb(232, 232, 232);
     border-radius: 5px;
-    corner-shape: notch;
     box-shadow: 0 0 2.5px 1px gray;
 }
 .logo:active{
