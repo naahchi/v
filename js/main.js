@@ -252,5 +252,5 @@ function searchCity() {
   state = state.replace(/\s+/g, "-");
 
   // redirect
-  window.location.href = /${state}/${city}/;
+  window.location.href = `/${state}/${city}/`;
 }
