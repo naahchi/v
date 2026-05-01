@@ -14,7 +14,7 @@ body{
     background-color: rgb(232, 232, 232);
 }
 h1{
-    font-size: 14px;
+    font-size: 18px;
     text-aligh: center;
 }
 .top_nav{
@@ -76,10 +76,6 @@ main{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     margin: 10px;
-}
-h1{
-    font-size: 40px;
-    letter-spacing: 10px;
 }
 .coming_soon{
     color: gray;
