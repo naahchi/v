@@ -232,12 +232,12 @@ fetch("./data/cities.json")
 
 // Search City
 function searchCity() {
-  let input = document.getElementById("search").value.trim();
+  let inputSearch = document.getElementById("search").value.trim();
 
-  if (!input) return;
+  if (!inputSearch) return;
 
   // "Raipur, Chhattisgarh" → split
-  let parts = input.split(",");
+  let parts = inputSearch.split(",");
 
   let city = parts[0]?.trim().toLowerCase();
   let state = parts[1]?.trim().toLowerCase();
