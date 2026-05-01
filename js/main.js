@@ -129,7 +129,7 @@ function removeActive(items) {
   }
 }
 
-input.addEventListener("keydown", (e) => {
+input?.addEventListener("keydown", (e) => {
   const items = suggestions.getElementsByTagName("li");
 
   if (e.key === "ArrowDown") {
