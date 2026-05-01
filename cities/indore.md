@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Indore Madhya Pradesh
 state: madhya pradesh
 city: indore
+category: personal
 permalink: /madhya-pradesh/indore/
 ---
