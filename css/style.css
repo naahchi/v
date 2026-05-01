@@ -14,6 +14,7 @@ body{
     background-color: rgb(232, 232, 232);
 }
 h1{
+    text-transform: capitalize;
     font-size: 18px;
     text-aligh: center;
     padding: 10px;
@@ -46,6 +47,7 @@ h1{
     scale: 0.9;
 }
 .mini_state{
+    text-transform: capitalize;
     margin-bottom: -13px;
 }
 .bottom_nav{
