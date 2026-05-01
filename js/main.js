@@ -129,7 +129,7 @@ function removeActive(items) {
   }
 }
 
-input?.addEventListener("keydown", (e) => {
+input.addEventListener("keydown", (e) => {
   const items = suggestions.getElementsByTagName("li");
 
   if (e.key === "ArrowDown") {
@@ -188,7 +188,7 @@ const handleSearch = debounce(() => {
 
 }, 250);
 
-input?.addEventListener("input", handleSearch);
+input.addEventListener("input", handleSearch);
 
 // ====== Outside click ======
 document.addEventListener("click", (e) => {
