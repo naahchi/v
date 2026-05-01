@@ -220,3 +220,12 @@ fetch("./data/cities.json")
 
 const slug = window.location.pathname.replace(/\//g, "");
 console.log("City:", slug);
+
+// Search City
+function goToCity(item) {
+  const state = item.state.toLowerCase().replace(/\s+/g, '-');
+  const city = item.city.toLowerCase().replace(/\s+/g, '-');
+
+  const url = `/${state}/${city}/`;
+  window.location.href = url;
+}
