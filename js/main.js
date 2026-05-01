@@ -188,7 +188,7 @@ const handleSearch = debounce(() => {
 
 }, 250);
 
-input.addEventListener("input", handleSearch);
+input?.addEventListener("input", handleSearch);
 
 // ====== Outside click ======
 document.addEventListener("click", (e) => {
