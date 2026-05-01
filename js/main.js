@@ -13,6 +13,22 @@ let currentFocus = -1;
 
 // ====== Utils ======
 
+// Value Populate
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("search");
+
+  const city = "{{ page.city }}";
+  const state = "{{ page.state }}";
+
+  if (city && state && input) {
+    input.value = capitalize(city) + ", " + capitalize(state);
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+});
+
 // Debounce
 function debounce(fn, delay = 250) {
   let t;
