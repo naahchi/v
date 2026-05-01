@@ -91,6 +91,7 @@ function showSuggestions(list, query) {
 
     li.addEventListener("click", () => {
       input.value = `${item.city}, ${item.state}`;
+      goToCity(item);
       closeDropdown();
     });
 
