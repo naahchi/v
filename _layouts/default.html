@@ -12,7 +12,8 @@
   <main>
     <h1>{{ page.title }}</h1>
     {% include search.html %}
-    {{ content }}
+    <div id="content">Loading...</div>
+    <!-- {{ content }} -->
   </main>
   {% include footer.html %}
 
@@ -32,6 +33,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script> -->
+
+<script>
+  // URL parse
+  const path = window.location.pathname.split("/").filter(Boolean);
+
+  const state = path[0];
+  const city = path[1];
+  const category = path[2];
+
+  // Available categories from MD
+  const availableCategories = {{ page.categories | jsonify }};
+
+  let content = "";
+
+  // Default (no category)
+  if (!category) {
+    content = "Welcome to {{ page.title }}";
+  }
+
+  // Validate category
+  else if (!availableCategories.includes(category)) {
+    content = "Category not found";
+  }
+
+  // Category content
+  else {
+    if (category === "news") {
+      content = "Latest news in {{ page.title }}";
+    }
+
+    if (category === "jobs") {
+      content = "Jobs in {{ page.title }}";
+    }
+
+    if (category === "hotels") {
+      content = "Hotels in {{ page.title }}";
+    }
+  }
+
+  document.getElementById("content").innerHTML = content;
+</script>
     
 <script src="/js/main.js"></script>
 </body>
