@@ -199,7 +199,7 @@ document.addEventListener("click", (e) => {
 });
 
 // ====== Init (fetch JSON + Fuse) ======
-fetch("./data/cities.json")
+fetch("https://vinku.in/data/cities.json")
   .then(res => res.json())
   .then(data => {
     cities = data;
