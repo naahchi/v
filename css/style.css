@@ -70,9 +70,10 @@ body{
 main{
     min-height: calc(100dvh - 128px);
     font-family: Arial, Helvetica, sans-serif;
-    display: grid;
+    /* display: grid;
     text-align: center;
-    place-content: center;
+    place-content: center; */
+    text-align: center;
 }
 h1{
     font-size: 40px;
@@ -85,7 +86,6 @@ h1{
     font-weight: bold;
 }
 footer{
-    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     padding: 10px;
@@ -95,4 +95,90 @@ footer{
     text-decoration: none;
     color: black;
     font-weight: bolder;
+}
+
+.search-box{
+    width: 96%;
+    position: relative;
+    margin: 10px auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+input:focus{
+    outline: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  /* max-height: 220px; */
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+/* suggestion item */
+li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+li:nth-child(odd){
+    background-color: rgb(236, 236, 236);
+}
+
+li:hover, .active {
+    background: #f0f0f0;
+}
+
+/* no result */
+#noResults {
+  padding: 10px;
+  color: #777;
+  text-align: center;
+}
+
+/* skeleton */
+.loader-item {
+  height: 14px;
+  margin: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.city{
+    font-weight: 500;
+}
+.state{
+    color: #777;
+    font-size: 14px;
+}
+.mark{
+    background: none;
+    color: black;
+    font-weight: bold;
 }
