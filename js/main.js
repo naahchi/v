@@ -14,13 +14,25 @@ let currentFocus = -1;
 // ====== Utils ======
 
 // Debounce
-function debounce(fn, delay = 250) {
-  let t;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout(() => fn.apply(this, args), delay);
-  };
+function searchCity() {
+  const inputCity = document.getElementById("search").value.toLowerCase().trim();
+
+  if (!inputCity) return;
+
+  const city = input.replace(/\s+/g, '-');
+
+  // अगर state पता है तो:
+  const state = "chhattisgarh"; // अभी fix रखो (baad me dynamic karenge)
+
+  window.location.href = /${state}/${city}/;
 }
+// function debounce(fn, delay = 250) {
+//   let t;
+//   return (...args) => {
+//     clearTimeout(t);
+//     t = setTimeout(() => fn.apply(this, args), delay);
+//   };
+// }
 
 // Normalize (safe lower-case)
 function norm(s) {
@@ -219,10 +231,26 @@ fetch("./data/cities.json")
   });
 
 // Search City
-function goToCity(item) {
-  const state = item.state.toLowerCase().replace(/\s+/g, '-');
-  const city = item.city.toLowerCase().replace(/\s+/g, '-');
+function searchCity() {
+  let input = document.getElementById("search").value.trim();
 
-  const url = `/${state}/${city}/`;
-  window.location.href = url;
+  if (!input) return;
+
+  // "Raipur, Chhattisgarh" → split
+  let parts = input.split(",");
+
+  let city = parts[0]?.trim().toLowerCase();
+  let state = parts[1]?.trim().toLowerCase();
+
+  if (!city || !state) {
+    alert("Please select city from suggestion");
+    return;
+  }
+
+  // SEO slug बनाओ
+  city = city.replace(/\s+/g, "-");
+  state = state.replace(/\s+/g, "-");
+
+  // redirect
+  window.location.href = /${state}/${city}/;
 }
