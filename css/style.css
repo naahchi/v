@@ -13,6 +13,10 @@ svg{
 body{
     background-color: rgb(232, 232, 232);
 }
+h1{
+    font-size: 18px;
+    text-aligh: center;
+}
 .top_nav{
     position: sticky;
     top: 0;
