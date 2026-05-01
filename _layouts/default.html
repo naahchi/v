@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vinku.in</title>
+    <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 </head>
 <body>
   {% include header.html %}
   <main>
+    <h1>{{ page.title }}</h1>
     {% include search.html %}
     {{ content }}
   </main>
   {% include footer.html %}
 
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("search");
 
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 });
-</script>
+</script> -->
     
 <script src="/js/main.js"></script>
 </body>
