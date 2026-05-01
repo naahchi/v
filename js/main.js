@@ -14,25 +14,13 @@ let currentFocus = -1;
 // ====== Utils ======
 
 // Debounce
-function searchCity() {
-  const inputCity = document.getElementById("search").value.toLowerCase().trim();
-
-  if (!inputCity) return;
-
-  const city = input.replace(/\s+/g, '-');
-
-  // अगर state पता है तो:
-  const state = "chhattisgarh"; // अभी fix रखो (baad me dynamic karenge)
-
-  window.location.href = /${state}/${city}/;
+function debounce(fn, delay = 250) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn.apply(this, args), delay);
+  };
 }
-// function debounce(fn, delay = 250) {
-//   let t;
-//   return (...args) => {
-//     clearTimeout(t);
-//     t = setTimeout(() => fn.apply(this, args), delay);
-//   };
-// }
 
 // Normalize (safe lower-case)
 function norm(s) {
