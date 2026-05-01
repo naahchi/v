@@ -44,6 +44,10 @@ h1{
 .logo:active{
     scale: 0.9;
 }
+.mini_state{
+    padding: 2px;
+    margin-bottom: -10px;
+}
 .bottom_nav{
     position: fixed;
     bottom: 0;
