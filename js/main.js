@@ -91,7 +91,7 @@ function showSuggestions(list, query) {
 
     li.addEventListener("click", () => {
       input.value = `${item.city}, ${item.state}`;
-      goToCity(item);
+      // goToCity(item);
       closeDropdown();
     });
 
@@ -217,10 +217,6 @@ fetch("./data/cities.json")
   .catch(err => {
     console.error("Cities load error:", err);
   });
-
-
-const slug = window.location.pathname.replace(/\//g, "");
-console.log("City:", slug);
 
 // Search City
 function goToCity(item) {
