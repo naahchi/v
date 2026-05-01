@@ -216,3 +216,33 @@ fetch("./data/cities.json")
   .catch(err => {
     console.error("Cities load error:", err);
   });
+
+// Search Bar
+function slugifyCity(city) {
+  return city
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")     // space → dash
+    .replace(/[^a-z0-9-]/g, ""); // special char remove
+}
+
+function goToCity() {
+  const input = document.getElementById("search").value;
+
+  if (!input) {
+    alert("Please enter a city");
+    return;
+  }
+
+  const slug = slugifyCity(input);
+
+  // 👇 यही main काम है
+  window.location.href = "/" + slug;
+}
+
+// Enter Key Search
+document.getElementById("search").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    goToCity();
+  }
+});
