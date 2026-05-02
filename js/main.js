@@ -251,8 +251,9 @@ function searchCity() {
   }
   // ❌ nothing selected
   else {
-    alert("Please select something");
-    return;
+    url = `/`;
+    // alert("Please select something");
+    // return;
   }
 
   window.location.href = url;
