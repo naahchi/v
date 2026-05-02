@@ -11,7 +11,11 @@
   {% include header.html %}
   <main>
     <h1>{{ page.category | default: "personal" }} service {{ page.city | default: "india" }}</h1>
-    {% include search.html %}
+
+    {% unless page.disable_search_bar %}
+      {% include search.html %}
+    {% endunless %}
+      
     {{ content }}
   </main>
   {% include footer.html %}
