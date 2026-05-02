@@ -16,7 +16,35 @@
   </main>
   {% include footer.html %}
 
+
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const input = document.getElementById("search");
+  const categoryDropdown = document.getElementById("category");
+
+  const city = "{{ page.city }}";
+  const state = "{{ page.state }}";
+  const category = "{{ page.category }}";
+
+  // city auto-fill
+  if (city && state && input) {
+    input.value = capitalize(city) + ", " + capitalize(state);
+  }
+
+  // category auto-select
+  if (category && categoryDropdown) {
+    categoryDropdown.value = category;
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+});
+</script>
+
+<!-- <script>
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("search");
 
@@ -31,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 });
-</script>
+</script> -->
     
 <script src="/js/main.js"></script>
 </body>
