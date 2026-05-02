@@ -220,27 +220,39 @@ fetch("https://vinku.in/data/cities.json")
 
 // Search City
 function searchCity() {
-  let inputSearch = document.getElementById("search").value.trim();
+  let input = document.getElementById("search").value.trim();
   let category = document.getElementById("category").value;
 
-  if (!inputSearch) return;
+  let city = "";
+  let state = "";
 
-  let parts = inputSearch.split(",");
+  if (input) {
+    let parts = input.split(",");
+    city = parts[0]?.trim().toLowerCase();
+    state = parts[1]?.trim().toLowerCase();
 
-  let city = parts[0]?.trim().toLowerCase();
-  let state = parts[1]?.trim().toLowerCase();
-
-  city = city.replace(/\s+/g, "-");
-  state = state.replace(/\s+/g, "-");
+    city = city.replace(/\s+/g, "-");
+    state = state.replace(/\s+/g, "-");
+  }
 
   let url = "";
 
-  if (category && city && state) {
+  // ✅ case 1: city + state + category
+  if (city && state && category) {
     url = `/${state}/${city}/${category}/`;
-  } else if (category) {
-    url = `/${category}/`;
-  } else if (city && state) {
+  }
+  // ✅ case 2: only city
+  else if (city && state) {
     url = `/${state}/${city}/`;
+  }
+  // ✅ case 3: only category (IMPORTANT FIX)
+  else if (category) {
+    url = `/${category}/`;
+  }
+  // ❌ nothing selected
+  else {
+    alert("Please select something");
+    return;
   }
 
   window.location.href = url;
