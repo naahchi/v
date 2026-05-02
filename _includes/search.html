@@ -24,7 +24,7 @@
     
       {% for cat in categories %}
         <option value="{{ cat }}" {% if active == cat %}selected{% endif %}>
-          {{ cat | replace: "-", " " | split: " " | map: "capitalize" | join: " " }}
+          {{ cat | replace: "-", " " | capitalize }}
         </option>
       {% endfor %}
     
