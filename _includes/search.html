@@ -3,7 +3,7 @@
     <input 
       type="search"
       id="search"
-      value="{% if page.city %}{{ page.city | append: ', ' | append: page.state }}{% endif %}"
+      value='{% if page.city %}{{ page.city | replace: "-", " " | append: ", " | append: page.state | replace: "-", " " }}{% endif %}'
       placeholder="Search city..."
     />
     
