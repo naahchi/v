@@ -12,16 +12,9 @@
         <div id="loader"></div>
         <div id="noResults">No results found</div>
     </div>
-    
-    <!-- <select id="category">
-      <option value="">Select Category</option>
-      <option value="escorts">Escorts</option>
-      <option value="news">News</option>
-      <option value="offers">Offers</option>
-    </select> -->
 
     {% assign active = page.category | default: "" %}
-    {% assign categories = "escorts,news,offers" | split: "," %}
+    {% assign categories = "escorts,callgirls,offers" | split: "," %}
     
     <select id="category">
         <option value="" {% if active == "" %}selected{% endif %}>Select Category</option>
