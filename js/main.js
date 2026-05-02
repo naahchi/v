@@ -221,24 +221,51 @@ fetch("https://vinku.in/data/cities.json")
 // Search City
 function searchCity() {
   let inputSearch = document.getElementById("search").value.trim();
+  let category = document.getElementById("category").value;
 
   if (!inputSearch) return;
 
-  // "Raipur, Chhattisgarh" → split
   let parts = inputSearch.split(",");
 
   let city = parts[0]?.trim().toLowerCase();
   let state = parts[1]?.trim().toLowerCase();
 
-  if (!city || !state) {
-    alert("Please select city from suggestion");
-    return;
-  }
-
-  // SEO slug बनाओ
   city = city.replace(/\s+/g, "-");
   state = state.replace(/\s+/g, "-");
 
-  // redirect
-  window.location.href = `/${state}/${city}/`;
+  let url = "";
+
+  if (category && city && state) {
+    url = /${state}/${city}/${category}/;
+  } else if (category) {
+    url = /${category}/;
+  } else if (city && state) {
+    url = /${state}/${city}/;
+  }
+
+  window.location.href = url;
 }
+
+// function searchCity() {
+//   let inputSearch = document.getElementById("search").value.trim();
+
+//   if (!inputSearch) return;
+
+//   // "Raipur, Chhattisgarh" → split
+//   let parts = inputSearch.split(",");
+
+//   let city = parts[0]?.trim().toLowerCase();
+//   let state = parts[1]?.trim().toLowerCase();
+
+//   if (!city || !state) {
+//     alert("Please select city from suggestion");
+//     return;
+//   }
+
+//   // SEO slug बनाओ
+//   city = city.replace(/\s+/g, "-");
+//   state = state.replace(/\s+/g, "-");
+
+//   // redirect
+//   window.location.href = `/${state}/${city}/`;
+// }
