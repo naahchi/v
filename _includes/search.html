@@ -1,5 +1,11 @@
 <div class="search-box">
-    <input type="search" value="{{ page.city | append: ', ' | append: page.state | default: '' }}" id="search" placeholder="Search city..." />
+    <!-- <input type="search" value="{{ page.city | append: ', ' | append: page.state | default: '' }}" id="search" placeholder="Search city..." /> -->
+    <input 
+      type="search"
+      id="search"
+      value="{% if page.city %}{{ page.city | append: ', ' | append: page.state }}{% endif %}"
+      placeholder="Search city..."
+    />
     
     <div id="dropdown" class="dropdown hidden">
         <ul id="suggestions"></ul>
