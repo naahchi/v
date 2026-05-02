@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // category auto-select
   if (category && categoryDropdown) {
     categoryDropdown.value = category;
+  } else if (categoryDropdown) {
+    categoryDropdown.value = ""; // default "Select Category"
   }
 
   function capitalize(str) {
