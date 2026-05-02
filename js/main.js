@@ -236,11 +236,11 @@ function searchCity() {
   let url = "";
 
   if (category && city && state) {
-    url = /${state}/${city}/${category}/;
+    url = `/${state}/${city}/${category}/`;
   } else if (category) {
-    url = /${category}/;
+    url = `/${category}/`;
   } else if (city && state) {
-    url = /${state}/${city}/;
+    url = `/${state}/${city}/`;
   }
 
   window.location.href = url;
