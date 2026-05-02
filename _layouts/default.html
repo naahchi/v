@@ -15,53 +15,6 @@
     {{ content }}
   </main>
   {% include footer.html %}
-
-
-<!-- <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const input = document.getElementById("search");
-  const categoryDropdown = document.getElementById("category");
-
-  const city = "{{ page.city }}";
-  const state = "{{ page.state }}";
-  const category = "{{ page.category }}";
-
-  // city auto-fill
-  if (city && state && input) {
-    input.value = capitalize(city) + ", " + capitalize(state);
-  }
-
-  // category auto-select
-  if (category && categoryDropdown) {
-    categoryDropdown.value = category;
-  } else if (categoryDropdown) {
-    categoryDropdown.value = ""; // default "Select Category"
-  }
-
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-});
-</script> -->
-
-<!-- <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("search");
-
-  const city = "{{ page.city }}";
-  const state = "{{ page.state }}";
-
-  if (city && state && input) {
-    input.value = capitalize(city) + ", " + capitalize(state);
-  }
-
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-});
-</script> -->
     
 <script src="/js/main.js"></script>
 </body>
