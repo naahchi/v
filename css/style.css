@@ -189,6 +189,10 @@ li:hover, .active {
     font-weight: bold;
 }
 
+.category option{
+    text-transform: capitalize;
+}
+
 /* Page not found  */
 .page_not_found{
     position: relative;
