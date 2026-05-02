@@ -189,7 +189,7 @@ li:hover, .active {
     font-weight: bold;
 }
 
-.category option{
+.cat_option {
     text-transform: capitalize;
 }
 
