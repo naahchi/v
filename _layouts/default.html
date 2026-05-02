@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.category | default: "personal" }} service {{ page.city | default: "india" }}</title>
+    <title>{{ page.category | default: "personal" | capitalize }} {{ page.service | default: "service" | capitalize }} {{ page.city | default: "india" | capitalize }}</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 </head>
