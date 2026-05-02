@@ -12,27 +12,27 @@
         <div id="loader"></div>
         <div id="noResults">No results found</div>
     </div>
-
-    <div class="cat_plus_search">
-        {% assign active = page.category | default: "" %}
-        {% assign categories = "escorts,callgirls,high-profiles" | split: "," %}
-        
-        <select id="category">
+    
+</div>
+<div class="cat_plus_search">
+    {% assign active = page.category | default: "" %}
+    {% assign categories = "escorts,callgirls,high-profiles" | split: "," %}
+    
+    <select id="category">
+      
+      <option value="" {% if active == "" %}selected{% endif %}>
+        Select Category
+      </option>
+    
+      {% for cat in categories %}
+        <option class="cat_option" value="{{ cat }}" {% if active == cat %}selected{% endif %}>
+          {{ cat | replace: "-", " " | capitalize }}
+        </option>
+      {% endfor %} -->    
           
-          <option value="" {% if active == "" %}selected{% endif %}>
-            Select Category
-          </option>
-        
-          {% for cat in categories %}
-            <option class="cat_option" value="{{ cat }}" {% if active == cat %}selected{% endif %}>
-              {{ cat | replace: "-", " " | capitalize }}
-            </option>
-          {% endfor %} -->    
-              
-        </select>
-        
-        </select>
-        
-        <button onclick="searchCity()">Search</button>
-    </div>
+    </select>
+    
+    </select>
+    
+    <button onclick="searchCity()">Search</button>
 </div>
