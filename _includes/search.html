@@ -13,11 +13,19 @@
         <div id="noResults">No results found</div>
     </div>
     
-    <select id="category">
+    <!-- <select id="category">
       <option value="">Select Category</option>
       <option value="escorts">Escorts</option>
       <option value="news">News</option>
       <option value="offers">Offers</option>
+    </select> -->
+
+    {% assign active = page.category | default: "" %}
+    {% assign categories = "escorts,news,offers" | split: "," %}
+    
+    <select id="category">
+        <option value="" {% if active == "" %}selected{% endif %}>Select Category</option>
+        {% for cat in categories %}<option value="{{ cat }}" {% if active == cat %}selected{% endif %}>{{ cat | capitalize }}</option>{% endfor %}
     </select>
     
     <button onclick="searchCity()">Search</button>
