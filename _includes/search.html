@@ -1,10 +1,18 @@
 <div class="search-box">
     <input type="search" id="search" placeholder="Search city..." />
-    <button onclick="searchCity()">Search</button>
-
+    
     <div id="dropdown" class="dropdown hidden">
         <ul id="suggestions"></ul>
         <div id="loader"></div>
         <div id="noResults">No results found</div>
     </div>
+    
+    <select id="category">
+      <option value="">Select Category</option>
+      <option value="escorts">Escorts</option>
+      <option value="news">News</option>
+      <option value="offers">Offers</option>
+    </select>
+    
+    <button onclick="searchCity()">Search</button>
 </div>
