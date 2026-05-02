@@ -23,7 +23,7 @@
       </option>
     
       {% for cat in categories %}
-        <option value="{{ cat }}" {% if active == cat %}selected{% endif %}>
+        <option class="cat_option" value="{{ cat }}" {% if active == cat %}selected{% endif %}>
           {{ cat | replace: "-", " " }}
         </option>
       {% endfor %}
