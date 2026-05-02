@@ -14,11 +14,11 @@
     </div>
 
     {% assign active = page.category | default: "" %}
-    {% assign categories = "escorts,callgirls,offers" | split: "," %}
+    {% assign categories = "escorts,caallgirls,high-profiles" | split: "," %} 
     
     <select id="category">
         <option value="" {% if active == "" %}selected{% endif %}>Select Category</option>
-        {% for cat in categories %}<option value="{{ cat }}" {% if active == cat %}selected{% endif %}>{{ cat | capitalize }}</option>{% endfor %}
+        {% for cat in categories %}<option value="{{ cat }}" {% if active == cat %}selected{% endif %}>{{ cat | replace: "-", " " | split: " " | map: "capitalize" | join: " " }}</option>{% endfor %}
     </select>
     
     <button onclick="searchCity()">Search</button>
