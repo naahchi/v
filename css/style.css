@@ -48,8 +48,8 @@ h1{
 }
 .mini_state{
     text-transform: capitalize;
-    text-align: center;
-    /* margin-bottom: -13px; */
+    /* text-align: center; */
+    margin-bottom: -13px;
 }
 .bottom_nav{
     position: fixed;
@@ -82,7 +82,7 @@ main{
     min-height: calc(100dvh - 139px);
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin: 0 clamp(10px, 4vw, 100px) 10px clamp(10px, 4vw, 100px);
+    margin: 0 50px 10px 50px;
 }
 .coming_soon{
     color: gray;
@@ -199,6 +199,9 @@ li:hover, .active {
 
 /* Media queries */
 @media (max-width: 768px) {
+    main{
+        margin: 0 10px 10px 10px;
+    }
     .search_section{
         grid-template-columns: 1fr;
     }
