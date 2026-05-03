@@ -48,7 +48,8 @@ h1{
 }
 .mini_state{
     text-transform: capitalize;
-    margin-bottom: -13px;
+    text-align: center;
+    /* margin-bottom: -13px; */
 }
 .bottom_nav{
     position: fixed;
