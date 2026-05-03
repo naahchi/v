@@ -16,7 +16,7 @@
       <h1>{{ page.category | replace: "-", " " | capitalize | default: "Personal" }} service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</h1>
     {% endunless %}
 
-    <small class="mini_state">{{ page.state | replace: "-", " " }}</small>
+    <!-- <small class="mini_state">{{ page.state | replace: "-", " " }}</small> -->
 
     {% unless page.disable_search_bar %}
       {% include search.html %}
