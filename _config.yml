@@ -1,0 +1,10 @@
+title: Personal Service India
+
+# baseurl: "/v"
+baseurl: ""
+
+# url: "https://naahchi.github.io"
+url: ""
+
+plugins:
+  - jekyll-feed
