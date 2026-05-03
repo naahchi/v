@@ -16,7 +16,7 @@ body{
 h1{
     text-transform: capitalize;
     font-size: 18px;
-    text-aligh: center;
+    text-align: center;
     padding: 10px;
 }
 .top_nav{
@@ -102,7 +102,12 @@ footer{
     font-weight: bolder;
 }
 
-.search-box{
+
+.search_section{
+    display: grid;
+    gap: 5px;
+}
+.search_box{
     width: 100%;
     position: relative;
     margin: 0 auto;
@@ -176,6 +181,20 @@ li:hover, .active {
   100% { background-position: 200px 0; }
 }
 
+.cat_plus_search{
+    display: flex;
+    gap: 5px;
+}
+.cat_plus_search select{
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+.cat_plus_search button{
+    padding: 10px;
+    font-size: 16px;
+}
+
 .city{
     font-weight: 500;
 }
@@ -187,17 +206,6 @@ li:hover, .active {
     background: none;
     color: black;
     font-weight: bold;
-}
-
-.cat_plus_search select{
-    width: 70%;
-    padding: 10px;
-    font-size: 16px;
-}
-.cat_plus_search button{
-    width: 25%;
-    padding: 10px;
-    font-size: 16px;
 }
 
 /* Page not found  */
