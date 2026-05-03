@@ -15,15 +15,15 @@ body{
 }
 h1{
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: clamp(18px, 4vw, 30px);
     text-align: center;
     padding: 10px;
 }
 .top_nav{
     position: sticky;
     top: 0;
-    height: 45px;
-    padding: 0 10px;
+    height: clamp(45px, 4vw, 70px);
+    padding: 0 clamp(10px, 4vw, 100px);
     display: flex;
     align-items: center;
     background-color: white;
@@ -36,7 +36,7 @@ h1{
     text-decoration: none;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: clamp(20px, 4vw, 25px);
     /* font-style: italic; */
     font-weight: 1000;
     background-color: rgb(232, 232, 232);
@@ -81,7 +81,7 @@ main{
     min-height: calc(100dvh - 139px);
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin: 0 10px 10px 10px;
+    margin: 0 clamp(10px, 4vw, 100px) 10px clamp(10px, 4vw, 100px);
 }
 .coming_soon{
     color: gray;
@@ -106,6 +106,7 @@ footer{
 .search_section{
     display: grid;
     gap: 5px;
+    grid-template-columns: 2fr 1fr auto;
 }
 .search_box{
     width: 100%;
@@ -193,6 +194,16 @@ li:hover, .active {
 .cat_plus_search button{
     padding: 10px;
     font-size: 16px;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .search_section{
+        grid-template-columns: 1fr;
+    }
+    .search_box{
+        grid-row: 1 / 1;
+    }
 }
 
 .city{
