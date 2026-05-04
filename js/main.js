@@ -239,11 +239,7 @@ function saveSearch(city, state, category) {
 
   let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-  const newItem = {
-    city,
-    state,
-    category
-  }
+  const newItem = {city, state, category}
 
   // duplicate remove (same city+category)
   searches = searches.filter(item => 
