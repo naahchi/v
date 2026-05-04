@@ -198,6 +198,9 @@ li:hover, .active {
 }
 
 /* Recent Search Section */
+#recent-container{
+    margin: 10px 0;
+}
 .recent-header{
     display: flex;
     justify-content: space-between;
