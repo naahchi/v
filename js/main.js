@@ -347,7 +347,7 @@ function loadRecentSearches() {
     let label = labelParts.join(", ");
   
     if (item.category) {
-      label += label ? ${formatText(item.category)} : formatText(item.category);
+      label += label ? `${formatText(item.category)}` : formatText(item.category);
     }
   
     li.innerHTML = `<a href="${url}">${label}</a>`;
