@@ -11,7 +11,19 @@ let fuse = null;
 let prefixMap = new Map();
 let currentFocus = -1;
 
-// ====== Utils ======
+// ====== slugify ======
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+}
+// Format Text
+function formatText(slug) {
+  return slug ? slug.replace(/-/g, " ") : "";
+}
 
 // Debounce
 function debounce(fn, delay = 250) {
@@ -218,6 +230,42 @@ fetch("https://vinku.in/data/cities.json")
     console.error("Cities load error:", err);
   });
 
+// Recent Search ==========================================================
+const MAX_ITEMS = 5;
+
+// Save search
+function saveSearch(query) {
+  if (!query) return;
+
+  let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+  // duplicate remove
+  searches = searches.filter(item => item !== query);
+
+  // add new at top
+  searches.unshift(query);
+
+  // limit
+  searches = searches.slice(0, MAX_ITEMS);
+
+  localStorage.setItem("recentSearches", JSON.stringify(searches));
+}
+
+// Build Url
+function buildUrl(state, city, category) {
+  let url = "";
+
+  if (state && city && category) {
+    url = `/${state}/${city}/${category}/`;
+  } else if (state && city) {
+    url = `/${state}/${city}/`;
+  } else if (category) {
+    url = `/${category}/`;
+  }
+
+  return url;
+}
+
 // Search City
 function searchCity() {
   let input = document.getElementById("search").value.trim();
@@ -228,14 +276,14 @@ function searchCity() {
 
   if (input) {
 
-    saveSearch(input); // Save to recent searches
-
     let parts = input.split(",");
     city = parts[0]?.trim().toLowerCase();
     state = parts[1]?.trim().toLowerCase();
 
-    city = city.replace(/\s+/g, "-");
-    state = state.replace(/\s+/g, "-");
+    city = slugify(city);
+    state = slugify(state);
+
+    saveSearch(city, state, category); // Save to recent searches
   }
 
   let url = "";
@@ -262,30 +310,9 @@ function searchCity() {
   window.location.href = url;
 }
 
-// Recent Search ==========================================================
-const MAX_ITEMS = 5;
-
-// Save search
-function saveSearch(query) {
-  if (!query) return;
-
-  let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-
-  // duplicate remove
-  searches = searches.filter(item => item !== query);
-
-  // add new at top
-  searches.unshift(query);
-
-  // limit
-  searches = searches.slice(0, MAX_ITEMS);
-
-  localStorage.setItem("recentSearches", JSON.stringify(searches));
-}
-
 // Show searches
 function loadRecentSearches() {
-  const list = document.getElementById("recentSearches");
+  const list = document.getElementById("recent-list");
   if (!list) return;
 
   const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
@@ -295,10 +322,11 @@ function loadRecentSearches() {
   searches.forEach(item => {
     const li = document.createElement("li");
 
-    // SEO-friendly URL
-    const url = `/search/${item.replace(/\s+/g, "-").toLowerCase()}/`;
+    const url = buildUrl(item.city, item.state, item.category);
 
-    li.innerHTML = `<a href="${url}">${item}</a>`;
+    const label = ${formatText(item.city)}, ${formatText(item.state)} (${formatText(item.category)});
+
+    li.innerHTML = `<a href="${url}">${label}</a>`;
     list.appendChild(li);
   });
 }
