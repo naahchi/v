@@ -320,7 +320,7 @@ function searchCity() {
 
 // Show searches
 function loadRecentSearches() {
-  const list = document.getElementById("recent-list");
+  const list = document.getElementById("recentSearches");
   if (!list) return;
 
   const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
@@ -330,7 +330,7 @@ function loadRecentSearches() {
   searches.forEach(item => {
     const li = document.createElement("li");
 
-    const url = buildUrl(item.city, item.state, item.category);
+    const url = buildUrl(item.state, item.city, item.category);
 
     const label = `${formatText(item.city)}, ${formatText(item.state)} (${formatText(item.category)})`;
 
