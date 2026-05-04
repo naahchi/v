@@ -198,6 +198,10 @@ li:hover, .active {
 }
 
 /* Recent Search Section */
+.recent-header{
+    display: flex;
+    justify-content: space-between;
+}
 #recent-chips {
   display: flex;
   gap: 10px;
