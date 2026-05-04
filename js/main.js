@@ -324,7 +324,7 @@ function loadRecentSearches() {
 
     const url = buildUrl(item.city, item.state, item.category);
 
-    const label = ${formatText(item.city)}, ${formatText(item.state)} (${formatText(item.category)});
+    const label = `${formatText(item.city)}, ${formatText(item.state)} (${formatText(item.category)})`;
 
     li.innerHTML = `<a href="${url}">${label}</a>`;
     list.appendChild(li);
