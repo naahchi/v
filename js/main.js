@@ -324,35 +324,38 @@ function loadRecentSearches() {
 
   list.innerHTML = "";
 
-  // searches.forEach(item => {
-  //   const li = document.createElement("li");
-
-  //   const url = buildUrl(item.state, item.city, item.category);
-
-  //   const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
-
-  //   li.innerHTML = `<a href="${url}">${label}</a>`;
-  //   list.appendChild(li);
-  // });
   searches.forEach(item => {
     const li = document.createElement("li");
-  
+
     const url = buildUrl(item.state, item.city, item.category);
-  
-    const labelParts = [];
-  
-    if (item.city) labelParts.push(formatText(item.city));
-    if (item.state) labelParts.push(formatText(item.state));
-  
-    let label = labelParts.join(", ");
-  
-    if (item.category) {
-      label += label ? `${formatText(item.category)}` : formatText(item.category);
-    }
-  
+
+    const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
+
     li.innerHTML = `<a href="${url}">${label}</a>`;
     list.appendChild(li);
   });
+
+  
+  // searches.forEach(item => {
+  //   const li = document.createElement("li");
+  
+  //   const url = buildUrl(item.state, item.city, item.category);
+  
+  //   const labelParts = [];
+  
+  //   if (item.city) labelParts.push(formatText(item.city));
+  //   if (item.state) labelParts.push(formatText(item.state));
+  
+  //   let label = labelParts.join(", ");
+  
+  //   if (item.category) {
+  //     label += label ? `${formatText(item.category)}` : formatText(item.category);
+  //   }
+  
+  //   li.innerHTML = `<a href="${url}">${label}</a>`;
+  //   list.appendChild(li);
+  // });
+  
 }
 
 // Load Recent Searches on page load
