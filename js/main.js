@@ -235,7 +235,7 @@ const MAX_ITEMS = 5;
 
 // Save search
 function saveSearch(city, state, category) {
-  if (!city || !category) return;
+  if (!city) return;
 
   let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
@@ -278,7 +278,7 @@ function searchCity() {
   let city = "";
   let state = "";
 
-  if (input || category) {
+  if (input) {
 
     let parts = input.split(",");
     city = parts[0]?.trim().toLowerCase();
