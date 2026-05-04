@@ -21,10 +21,18 @@
     {% endunless %}
 
     <!-- Recent Searches -->
-    <div class="recent_searches">
+    <div id="recent-container" style="display:none;">
+      <div class="recent-header">
+        <span>Recent Search</span>
+        <button onclick="clearRecent()">Reset</button>
+      </div>
+    
+      <div id="recent-chips"></div>
+    </div>
+    <!-- <div class="recent_searches">
       <h3>Recent Searches</h3>
       <ul id="recentSearches"></ul>
-    </div>
+    </div> -->
       
     {{ content }}
   </main>
