@@ -197,6 +197,33 @@ li:hover, .active {
     font-size: 16px;
 }
 
+/* Recent Search Section */
+#recent-chips {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* scrollbar hide */
+#recent-chips::-webkit-scrollbar {
+  display: none;
+}
+#recent-chips {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chip {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 /* Media queries */
 @media (max-width: 768px) {
     main{
