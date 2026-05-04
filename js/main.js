@@ -227,6 +227,9 @@ function searchCity() {
   let state = "";
 
   if (input) {
+
+    saveSearch(input); // Save to recent searches
+
     let parts = input.split(",");
     city = parts[0]?.trim().toLowerCase();
     state = parts[1]?.trim().toLowerCase();
@@ -259,26 +262,46 @@ function searchCity() {
   window.location.href = url;
 }
 
-// function searchCity() {
-//   let inputSearch = document.getElementById("search").value.trim();
+// Recent Search ==========================================================
+const MAX_ITEMS = 5;
 
-//   if (!inputSearch) return;
+// Save search
+function saveSearch(query) {
+  if (!query) return;
 
-//   // "Raipur, Chhattisgarh" → split
-//   let parts = inputSearch.split(",");
+  let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-//   let city = parts[0]?.trim().toLowerCase();
-//   let state = parts[1]?.trim().toLowerCase();
+  // duplicate remove
+  searches = searches.filter(item => item !== query);
 
-//   if (!city || !state) {
-//     alert("Please select city from suggestion");
-//     return;
-//   }
+  // add new at top
+  searches.unshift(query);
 
-//   // SEO slug बनाओ
-//   city = city.replace(/\s+/g, "-");
-//   state = state.replace(/\s+/g, "-");
+  // limit
+  searches = searches.slice(0, MAX_ITEMS);
 
-//   // redirect
-//   window.location.href = `/${state}/${city}/`;
-// }
+  localStorage.setItem("recentSearches", JSON.stringify(searches));
+}
+
+// Show searches
+function loadRecentSearches() {
+  const list = document.getElementById("recentSearches");
+  if (!list) return;
+
+  const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+  list.innerHTML = "";
+
+  searches.forEach(item => {
+    const li = document.createElement("li");
+
+    // SEO-friendly URL
+    const url = `/search/${item.replace(/\s+/g, "-").toLowerCase()}/`;
+
+    li.innerHTML = `<a href="${url}">${item}</a>`;
+    list.appendChild(li);
+  });
+}
+
+// Load Recent Searches on page load
+document.addEventListener("DOMContentLoaded", loadRecentSearches);
