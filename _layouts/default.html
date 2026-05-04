@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.category | replace: "-", " " | capitalize | default: "Personal" }} Service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</title>
+    <title>{{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</title>
     <!-- <title>{{ page.category | default: "personal" | capitalize }} {{ page.service | default: "service" | capitalize }} {{ page.city | default: "india" | capitalize }}</title> -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
@@ -13,7 +13,7 @@
   <main>
       
     {% unless page.disable_main_heading %} 
-      <h1>{{ page.category | replace: "-", " " | capitalize | default: "Personal" }} service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</h1>
+      <h1>{{ page.category | replace: "-", " " | capitalize | default: "Personals" }} service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</h1>
     {% endunless %}
 
     {% unless page.disable_search_bar %}
