@@ -368,37 +368,87 @@ function searchCity() {
 
 // Show searches
 function loadRecentSearches() {
-  const list = document.getElementById("recentSearches");
-  if (!list) return;
+
+  const container = document.getElementById("recent-container");
+  const wrapper = document.getElementById("recent-chips");
+
+  if (!container || !wrapper) return;
 
   const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-  list.innerHTML = "";
+  wrapper.innerHTML = "";
+
+  // 👉 UI show/hide
+  if (searches.length === 0) {
+    container.style.display = "none";
+    return;
+  } else {
+    container.style.display = "block";
+  }
 
   searches.forEach(item => {
-    const li = document.createElement("li");
+
+    const chip = document.createElement("div");
+    chip.className = "chip";
 
     const url = buildUrl(item.state, item.city, item.category);
 
-    // const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
+    // label बनाओ (clean)
     const parts = [];
 
     if (item.city) parts.push(formatText(item.city));
     if (item.state) parts.push(formatText(item.state));
-    
+
     let label = parts.join(", ");
-    
+
     if (item.category) {
       const cat = toTitleCase(item.category);
-    
-      label = label
-        ? `${label} ${cat}`
-        : cat; // 👈 category-only case fix
+      label = label ? `${label} ${cat}` : cat;
     }
 
-    li.innerHTML = `<a href="${url}">${label}</a>`;
-    list.appendChild(li);
+    chip.innerText = label;
+
+    chip.onclick = () => {
+      window.location.href = url;
+    };
+
+    wrapper.appendChild(chip);
   });
+}
+
+
+// function loadRecentSearches() {
+//   const list = document.getElementById("recentSearches");
+//   if (!list) return;
+
+//   const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+//   list.innerHTML = "";
+
+//   searches.forEach(item => {
+//     const li = document.createElement("li");
+
+//     const url = buildUrl(item.state, item.city, item.category);
+
+//     // const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
+//     const parts = [];
+
+//     if (item.city) parts.push(formatText(item.city));
+//     if (item.state) parts.push(formatText(item.state));
+    
+//     let label = parts.join(", ");
+    
+//     if (item.category) {
+//       const cat = toTitleCase(item.category);
+    
+//       label = label
+//         ? `${label} ${cat}`
+//         : cat; // 👈 category-only case fix
+//     }
+
+//     li.innerHTML = `<a href="${url}">${label}</a>`;
+//     list.appendChild(li);
+//   });
 
   
   // searches.forEach(item => {
@@ -421,6 +471,12 @@ function loadRecentSearches() {
   //   list.appendChild(li);
   // });
   
+// }
+
+// Reset Recent Search
+function clearRecent() {
+  localStorage.removeItem("recentSearches");
+  loadRecentSearches();
 }
 
 // Load Recent Searches on page load
