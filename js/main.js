@@ -11,6 +11,15 @@ let fuse = null;
 let prefixMap = new Map();
 let currentFocus = -1;
 
+
+function toTitleCase(text) {
+  return text
+    .replace(/-/g, " ")
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 // ====== slugify ======
 function slugify(text) {
   return text
@@ -22,8 +31,11 @@ function slugify(text) {
 }
 // Format Text
 function formatText(slug) {
-  return slug ? slug.replace(/-/g, " ") : "";
+  return slug ? toTitleCase(slug) : "";
 }
+// function formatText(slug) {
+//   return slug ? slug.replace(/-/g, " ") : "";
+// }
 
 // Debounce
 function debounce(fn, delay = 250) {
@@ -368,7 +380,21 @@ function loadRecentSearches() {
 
     const url = buildUrl(item.state, item.city, item.category);
 
-    const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
+    // const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
+    const parts = [];
+
+    if (item.city) parts.push(formatText(item.city));
+    if (item.state) parts.push(formatText(item.state));
+    
+    let label = parts.join(", ");
+    
+    if (item.category) {
+      const cat = toTitleCase(item.category);
+    
+      label = label
+        ? `${label} ${cat}`
+        : cat; // 👈 category-only case fix
+    }
 
     li.innerHTML = `<a href="${url}">${label}</a>`;
     list.appendChild(li);
