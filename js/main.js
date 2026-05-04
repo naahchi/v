@@ -235,7 +235,7 @@ const MAX_ITEMS = 5;
 
 // Save search
 function saveSearch(city, state, category) {
-  if (!city) return;
+  if (!city && !category) return;
 
   let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
@@ -272,48 +272,87 @@ function buildUrl(state, city, category) {
 
 // Search City
 function searchCity() {
+
   let input = document.getElementById("search").value.trim();
   let category = document.getElementById("category").value;
 
   let city = "";
   let state = "";
 
+  // 👉 parse city/state (अगर input है)
   if (input) {
-
     let parts = input.split(",");
-    city = parts[0]?.trim().toLowerCase();
-    state = parts[1]?.trim().toLowerCase();
 
-    city = slugify(city);
-    state = slugify(state);
-    category = slugify(category);
-
-    saveSearch(city, state, category); // Save to recent searches
+    city = parts[0]?.trim() || "";
+    state = parts[1]?.trim() || "";
   }
 
-  let url = "";
+  // 👉 slugify (हर case में)
+  city = slugify(city);
+  state = slugify(state);
+  category = slugify(category);
 
-  // ✅ case 1: city + state + category
-  if (city && state && category) {
-    url = `/${state}/${city}/${category}/`;
-  }
-  // ✅ case 2: only city
-  else if (city && state) {
-    url = `/${state}/${city}/`;
-  }
-  // ✅ case 3: only category (IMPORTANT FIX)
-  else if (category) {
-    url = `/${category}/`;
-  }
-  // ❌ nothing selected
-  else {
-    url = `/`;
-    // alert("Please select something");
-    // return;
+  // =========================
+  // ✅ SAVE LOGIC (independent)
+  // =========================
+  if (city || category) {
+    saveSearch(city, state, category);
   }
 
-  window.location.href = url;
+  // =========================
+  // ✅ REDIRECT LOGIC (separate)
+  // =========================
+  let url = buildUrl(state, city, category);
+
+  if (url) {
+    window.location.href = url;
+  }
 }
+
+
+// function searchCity() {
+//   let input = document.getElementById("search").value.trim();
+//   let category = document.getElementById("category").value;
+
+//   let city = "";
+//   let state = "";
+
+//   if (input) {
+
+//     let parts = input.split(",");
+//     city = parts[0]?.trim().toLowerCase();
+//     state = parts[1]?.trim().toLowerCase();
+
+//     city = slugify(city);
+//     state = slugify(state);
+//     category = slugify(category);
+
+//     saveSearch(city, state, category); // Save to recent searches
+//   }
+
+//   let url = "";
+
+//   // ✅ case 1: city + state + category
+//   if (city && state && category) {
+//     url = `/${state}/${city}/${category}/`;
+//   }
+//   // ✅ case 2: only city
+//   else if (city && state) {
+//     url = `/${state}/${city}/`;
+//   }
+//   // ✅ case 3: only category (IMPORTANT FIX)
+//   else if (category) {
+//     url = `/${category}/`;
+//   }
+//   // ❌ nothing selected
+//   else {
+//     url = `/`;
+//     // alert("Please select something");
+//     // return;
+//   }
+
+//   window.location.href = url;
+// }
 
 // Show searches
 function loadRecentSearches() {
