@@ -290,6 +290,7 @@ function searchCity() {
 
     city = slugify(city);
     state = slugify(state);
+    category = slugify(category);
 
     saveSearch(city, state, category); // Save to recent searches
   }
