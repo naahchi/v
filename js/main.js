@@ -234,16 +234,24 @@ fetch("https://vinku.in/data/cities.json")
 const MAX_ITEMS = 5;
 
 // Save search
-function saveSearch(query) {
-  if (!query) return;
+function saveSearch(city, state, category) {
+  if (!city) return;
 
   let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-  // duplicate remove
-  searches = searches.filter(item => item !== query);
+  const newItem = {
+    city,
+    state,
+    category
+  }
+
+  // duplicate remove (same city+category)
+  searches = searches.filter(item => 
+    !(item.city === city && item.category === category)
+  );
 
   // add new at top
-  searches.unshift(query);
+  searches.unshift(newItem);
 
   // limit
   searches = searches.slice(0, MAX_ITEMS);
