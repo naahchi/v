@@ -128,11 +128,13 @@ footer{
     display: grid;
     gap: 5px;
     grid-template-columns: 2fr 1fr auto;
+    z-index: 999;
 }
 .search_box{
     width: 100%;
     position: relative;
     margin: 0 auto;
+    z-index: 999;
 }
 
 input {
@@ -140,6 +142,7 @@ input {
     padding: 10px;
     font-size: 16px;
     text-transform: capitalize;
+    z-index: 999;
 }
 input:focus{
     outline: none;
@@ -154,16 +157,16 @@ input:focus{
   border: 1px solid #ccc;
   /* max-height: 220px; */
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .hidden {
   display: none;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #suggestions{
-    z-index: 1000;
+    z-index: 999;
 }
 
 ul {
@@ -171,14 +174,14 @@ ul {
   padding: 0;
   list-style: none;
   text-align: left;
-  z-index: 1000;
+  z-index: 999;
 }
 
 /* suggestion item */
 li {
   padding: 10px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 999;
 }
 
 li:nth-child(odd){
@@ -194,6 +197,7 @@ li:hover, .active {
   padding: 10px;
   color: #777;
   text-align: center;
+  z-index: 999;
 }
 
 /* skeleton */
@@ -203,6 +207,7 @@ li:hover, .active {
   border-radius: 4px;
   background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
   animation: shimmer 1.2s infinite;
+  z-index: 999;
 }
 
 @keyframes shimmer {
