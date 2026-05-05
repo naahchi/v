@@ -345,6 +345,8 @@ function searchCity() {
         // 👉 category only
         saveSearch(city, state, category);
       }
+    
+    }
   }
 
   // =========================
