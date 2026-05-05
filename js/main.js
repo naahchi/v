@@ -124,9 +124,7 @@ function showNoResults() {
 function highlight(text, query) {
   if (!query) return text;
   const safe = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  // return text.replace(new RegExp(`${safe}`, "gi"), "<mark>$1</mark>");
-  return text.replace(new RegExp(`${safe}`, "gi");
-  return text.replace(re, "<mark>$1</mark>");
+  return text.replace(new RegExp(`${safe}`, "gi"), "<mark>$1</mark>");
 }
 
 function showSuggestions(list, query) {
