@@ -259,7 +259,7 @@ fetch("https://vinku.in/data/cities.json")
   });
 
 // Recent Search ==========================================================
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 10;
 
 // Save search
 function saveSearch(city, state, category) {
@@ -324,9 +324,9 @@ function searchCity() {
   // ✅ SAVE LOGIC (independent)
   // =========================
   if (city || category) {
-    if (city) {
+    if (city || category) {
       // 👉 अगर city है तो validate करो
-      if (city) {
+      if (city || category) {
     
         if (citySet.size === 0) {
           console.log("Cities अभी load नहीं हुई");
