@@ -11,7 +11,13 @@ let fuse = null;
 let prefixMap = new Map();
 let currentFocus = -1;
 
+// City Validate
+function isValidCity(city, state) {
+  const key = `${city}-${state}`;
+  return citySet.has(key);
+}
 
+// Totitle
 function toTitleCase(text) {
   return text
     .replace(/-/g, " ")
@@ -64,6 +70,16 @@ function buildIndex(data) {
       if (!prefixMap.has(p)) prefixMap.set(p, []);
       prefixMap.get(p).push(item);
     }
+  });
+}
+
+// city Validate
+let citySet = new Set();
+
+function buildCitySet(data) {
+  data.forEach(item => {
+    const key = `${item.city}-${item.state}`; // already slug होना चाहिए
+    citySet.add(key);
   });
 }
 
@@ -230,6 +246,7 @@ fetch("https://vinku.in/data/cities.json")
 
     // build fast index
     buildIndex(cities);
+    buildCitySet(cities);
 
     // fuse setup
     fuse = new Fuse(cities, {
@@ -308,7 +325,24 @@ function searchCity() {
   // ✅ SAVE LOGIC (independent)
   // =========================
   if (city || category) {
-    saveSearch(city, state, category);
+    if (city) {
+      // 👇 validation
+      if (citySet.size === 0) {
+        console.log("Cities अभी load नहीं हुई");
+        return;
+      }
+  
+      if (!isValidCity(city, state)) {
+        console.log("Invalid city, skip saving");
+      } else {
+        saveSearch(city, state, category);
+      }
+  
+    } else {
+      // category only
+      saveSearch(city, state, category);
+    }
+    // saveSearch(city, state, category);
   }
 
   // =========================
@@ -320,51 +354,6 @@ function searchCity() {
     window.location.href = url;
   }
 }
-
-
-// function searchCity() {
-//   let input = document.getElementById("search").value.trim();
-//   let category = document.getElementById("category").value;
-
-//   let city = "";
-//   let state = "";
-
-//   if (input) {
-
-//     let parts = input.split(",");
-//     city = parts[0]?.trim().toLowerCase();
-//     state = parts[1]?.trim().toLowerCase();
-
-//     city = slugify(city);
-//     state = slugify(state);
-//     category = slugify(category);
-
-//     saveSearch(city, state, category); // Save to recent searches
-//   }
-
-//   let url = "";
-
-//   // ✅ case 1: city + state + category
-//   if (city && state && category) {
-//     url = `/${state}/${city}/${category}/`;
-//   }
-//   // ✅ case 2: only city
-//   else if (city && state) {
-//     url = `/${state}/${city}/`;
-//   }
-//   // ✅ case 3: only category (IMPORTANT FIX)
-//   else if (category) {
-//     url = `/${category}/`;
-//   }
-//   // ❌ nothing selected
-//   else {
-//     url = `/`;
-//     // alert("Please select something");
-//     // return;
-//   }
-
-//   window.location.href = url;
-// }
 
 // Show searches
 function loadRecentSearches() {
@@ -415,63 +404,6 @@ function loadRecentSearches() {
     wrapper.appendChild(chip);
   });
 }
-
-
-// function loadRecentSearches() {
-//   const list = document.getElementById("recentSearches");
-//   if (!list) return;
-
-//   const searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-
-//   list.innerHTML = "";
-
-//   searches.forEach(item => {
-//     const li = document.createElement("li");
-
-//     const url = buildUrl(item.state, item.city, item.category);
-
-//     // const label = `${formatText(item.city)}, ${formatText(item.state)} ${formatText(item.category)}`;
-//     const parts = [];
-
-//     if (item.city) parts.push(formatText(item.city));
-//     if (item.state) parts.push(formatText(item.state));
-    
-//     let label = parts.join(", ");
-    
-//     if (item.category) {
-//       const cat = toTitleCase(item.category);
-    
-//       label = label
-//         ? `${label} ${cat}`
-//         : cat; // 👈 category-only case fix
-//     }
-
-//     li.innerHTML = `<a href="${url}">${label}</a>`;
-//     list.appendChild(li);
-//   });
-
-  
-  // searches.forEach(item => {
-  //   const li = document.createElement("li");
-  
-  //   const url = buildUrl(item.state, item.city, item.category);
-  
-  //   const labelParts = [];
-  
-  //   if (item.city) labelParts.push(formatText(item.city));
-  //   if (item.state) labelParts.push(formatText(item.state));
-  
-  //   let label = labelParts.join(", ");
-  
-  //   if (item.category) {
-  //     label += label ? `${formatText(item.category)}` : formatText(item.category);
-  //   }
-  
-  //   li.innerHTML = `<a href="${url}">${label}</a>`;
-  //   list.appendChild(li);
-  // });
-  
-// }
 
 // Reset Recent Search
 function clearRecent() {
