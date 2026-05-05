@@ -33,7 +33,7 @@
 
     <div class="description">
         <p>
-            {{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service in {{ page.city | replace: "-", " " | append: ", " | append: page.state | replace: "-", " " | default: "India" }} offers trusted and verified providers near you, delivering quality solutions with affordable pricing and flexible payment options including <strong>Cash on Delivery</strong>. Choose reliable services designed to meet your needs with ease and convenience.
+            {{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service in '{% if page.city %}{{ page.city | replace: "-", " " | append: ", " | append: page.state | replace: "-", " " }}{% else %}India{% endif %}' offers trusted and verified providers near you, delivering quality solutions with affordable pricing and flexible payment options including <strong>Cash on Delivery</strong>. Choose reliable services designed to meet your needs with ease and convenience.
         </p>
     </div>
       
