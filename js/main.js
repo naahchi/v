@@ -13,8 +13,7 @@ let currentFocus = -1;
 
 // City Validate
 function isValidCity(city, state) {
-  const key = `${city}-${state}`;
-  return citySet.has(key);
+  return citySet.has(`${city}-${state}`);
 }
 
 // Totitle
@@ -78,7 +77,7 @@ let citySet = new Set();
 
 function buildCitySet(data) {
   data.forEach(item => {
-    const key = `${item.city}-${item.state}`; // already slug होना चाहिए
+    const key = `${slugify(item.city)}-${slugify(item.state)}`; // already slug होना चाहिए
     citySet.add(key);
   });
 }
@@ -326,23 +325,26 @@ function searchCity() {
   // =========================
   if (city || category) {
     if (city) {
-      // 👇 validation
-      if (citySet.size === 0) {
-        console.log("Cities अभी load नहीं हुई");
-        return;
-      }
-  
-      if (!isValidCity(city, state)) {
-        console.log("Invalid city, skip saving");
+      // 👉 अगर city है तो validate करो
+      if (city) {
+    
+        if (citySet.size === 0) {
+          console.log("Cities अभी load नहीं हुई");
+        } 
+        else if (!isValidCity(city, state)) {
+    
+          alert("City not found"); // 👈 alert दिखाओ
+          return; // 👉 गलत city पर redirect भी रोकना है
+    
+        } 
+        else {
+          saveSearch(city, state, category); // ✅ valid city
+        }
+    
       } else {
+        // 👉 category only
         saveSearch(city, state, category);
       }
-  
-    } else {
-      // category only
-      saveSearch(city, state, category);
-    }
-    // saveSearch(city, state, category);
   }
 
   // =========================
