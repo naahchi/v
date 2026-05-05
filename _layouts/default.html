@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service {{ page.city | replace: "-", " " | capitalize | default: "India" | capitalize }}</title>
+    <meta name='description" content+"{{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service in {{ page.city | replace: "-", " " | append: ", " | append: page.state | replace: "-", " " | default: "India" }} – trusted and verified providers near you offering quality solutions, affordable pricing, and cash on delivery options.'>
     <!-- <title>{{ page.category | default: "personal" | capitalize }} {{ page.service | default: "service" | capitalize }} {{ page.city | default: "india" | capitalize }}</title> -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
@@ -29,10 +30,12 @@
     
       <div id="recent-chips"></div>
     </div>
-    <!-- <div class="recent_searches">
-      <h3>Recent Searches</h3>
-      <ul id="recentSearches"></ul>
-    </div> -->
+
+    <div class="description">
+        <p>
+            {{ page.category | replace: "-", " " | capitalize | default: "Personals" }} Service in {{ page.city | replace: "-", " " | append: ", " | append: page.state | replace: "-", " " | default: "India" }} offers trusted and verified providers near you, delivering quality solutions with affordable pricing and flexible payment options including <strong>Cash on Delivery</strong>. Choose reliable services designed to meet your needs with ease and convenience.
+        </p>
+    </div>
       
     {{ content }}
   </main>
