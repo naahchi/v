@@ -293,6 +293,8 @@ function buildUrl(state, city, category) {
     url = `/${state}/${city}/`;
   } else if (category) {
     url = `/${category}/`;
+  } else {
+    url = `/`;
   }
 
   return url;
