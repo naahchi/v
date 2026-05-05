@@ -274,6 +274,10 @@ li:hover, .active {
     text-align: left;
 }
 
+.desc_city{
+    text-transform: capitalize;
+}
+
 /* Media queries */
 @media (max-width: 768px) {
     main{
