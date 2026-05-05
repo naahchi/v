@@ -323,10 +323,10 @@ function searchCity() {
   // =========================
   // ✅ SAVE LOGIC (independent)
   // =========================
-  if (city || category) {
+  // if (city || category) {
     if (city || category) {
       // 👉 अगर city है तो validate करो
-      if (city || category) {
+      if (city) {
     
         if (citySet.size === 0) {
           console.log("Cities अभी load नहीं हुई");
@@ -347,7 +347,7 @@ function searchCity() {
       }
     
     }
-  }
+  // }
 
   // =========================
   // ✅ REDIRECT LOGIC (separate)
