@@ -244,6 +244,10 @@ li:hover, .active {
   padding: 10px 0;
   z-index: 0;
 }
+.recent_reset{
+    padding: 0 5px;
+    border-radius: 5px;
+}
 
 /* scrollbar hide */
 #recent-chips::-webkit-scrollbar {
