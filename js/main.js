@@ -123,8 +123,13 @@ function showNoResults() {
 
 function highlight(text, query) {
   if (!query) return text;
+
   const safe = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return text.replace(new RegExp(`${safe}`, "gi"), "<mark>$1</mark>");
+
+  return text.replace(
+    new RegExp(safe, "gi"),
+    match => `<mark>${match}</mark>`
+  );
 }
 
 function showSuggestions(list, query) {
