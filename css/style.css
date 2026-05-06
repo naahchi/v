@@ -82,7 +82,7 @@ main{
     position: relative;
     min-height: calc(100dvh - 139px);
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+    /* text-align: center; */
     margin: 0 50px 10px 50px;
     z-index: 1;
 }
@@ -272,7 +272,7 @@ li:hover, .active {
 .description{
     padding: 5px;
     margin: 10px 0;
-    text-align: left;
+    /* text-align: left; */
 }
 
 .desc_city{
